@@ -357,6 +357,15 @@ void compileStatement(void) {
     compileForSt();
     break;
     // EmptySt needs to check FOLLOW tokens
+    /*
+    BEGIN
+      a := 1;      (* sau ';' là END, nên câu lệnh thứ hai rỗng *)
+    END
+
+    BEGIN ; ; END  (* ba câu lệnh rỗng *)
+
+    IF x > 0 THEN ELSE a := 1   (* nhánh THEN rỗng *)
+    */
   case SB_SEMICOLON:
   case KW_END:
   case KW_ELSE:
